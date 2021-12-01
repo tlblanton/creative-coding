@@ -1,0 +1,63 @@
+<html>
+    <body>    
+        <canvas width="600", height="600"></canvas>
+        
+        <script>
+            let canvas = document.querySelector('canvas');
+            let context = canvas.getContext('2d');
+
+            context.lineWidth = 4;
+            
+            const w = 60;
+            const h = 60;
+            const gap = 20;
+            let x, y;
+            
+            for(i = 0; i < 5; ++i){
+                for(j = 0; j < 5; ++j){
+                    
+                    x = 100 + (w + gap) * i;
+                    y = 100 + (h + gap) * j;
+
+                    context.beginPath();
+                    context.rect(x, y, w, h);
+                    context.stroke();
+                                        
+                    rand = Math.random()
+                    if(rand > 0.5){
+                        context.beginPath();
+                        context.rect(x + 8, y + 8, w - 16, h - 16);
+                        context.stroke();
+
+                        if(rand > 0.7){
+                            context.beginPath()
+                            context.lineWidth = 3
+                            context.rect(x + 16, y + 16, w - 32, h - 32)
+                            context.stroke()
+                            context.lineWidth = 2
+
+                            if(rand > 0.88){
+                                context.beginPath()
+                                context.lineWidth = 2
+                                context.rect(x + 25, y + 25, w - 50, h - 50)
+                                context.stroke();
+                                context.lineWidth = 4
+
+                                if(rand > 0.95) {
+                                    context.beginPath()
+                                    context.fillStyle = 'red';
+                                    context.arc(x + (w/2), y + (h/2), w-58, 0, Math.PI * 2)
+                                    context.fill();
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            }
+
+        </script>
+
+    </body>
+</html>
